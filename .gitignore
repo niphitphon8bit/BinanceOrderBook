@@ -4,6 +4,8 @@ node_modules/
 # Build artifacts
 dist/
 build/
+**/.next/
+out/
 
 # Logs
 npm-debug.log*

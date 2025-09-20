@@ -57,6 +57,7 @@ export function createOrderBookManager(listeners: OrderBookListeners): OrderBook
     try {
       orderBookState = await fetchSnapshot(symbol, limit);
       snapshotReady = true;
+      broadcastCurrentState();
       processBufferedUpdates();
     } catch (err) {
       snapshotReady = false;

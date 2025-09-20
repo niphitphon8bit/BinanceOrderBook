@@ -20,7 +20,9 @@ export function createState(
 
 export function applyLevels(bookSide: Map<string, string>, updates: string[][]) {
   updates.forEach(([price, quantity]) => {
-    if (quantity === "0") {
+    const numericQuantity = Number(quantity);
+
+    if (!Number.isFinite(numericQuantity) || numericQuantity <= 0) {
       bookSide.delete(price);
     } else {
       bookSide.set(price, quantity);
