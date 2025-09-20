@@ -1,0 +1,122 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #0b0d17;
+  color: #f4f6fb;
+  --orderbook-row-height: 2.2rem;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.orderbook-card {
+  background: rgba(10, 12, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+  margin-bottom: 1.5rem;
+  min-height: calc(var(--orderbook-row-height) * 5 + 4.5rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.orderbook-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.orderbook-stack > :last-child {
+  margin-bottom: 0;
+}
+
+.orderbook-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.orderbook-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Menlo", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.orderbook-header {
+  color: #adb5d8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.orderbook-header th {
+  padding-bottom: 0.5rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.orderbook-header[data-align="right"] th {
+  text-align: right;
+}
+
+.orderbook-header[data-align="left"] th {
+  text-align: left;
+}
+
+.orderbook-row {
+  transition: background-color 0.15s ease;
+  height: var(--orderbook-row-height);
+}
+
+.orderbook-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.orderbook-row[data-align="right"] td {
+  text-align: right;
+}
+
+.orderbook-row[data-align="left"] td {
+  text-align: left;
+}
+
+.orderbook-cell {
+  padding: 0;
+  vertical-align: middle;
+}
+
+.orderbook-total {
+  position: relative;
+  overflow: hidden;
+}
+
+.orderbook-depth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0 0.35rem;
+  width: 100%;
+}
+
+.orderbook-price {
+  font-weight: 600;
+}
+
+.orderbook-empty {
+  height: calc(var(--orderbook-row-height) * 5);
+  color: #8f9bb3;
+  text-align: center;
+  vertical-align: middle;
+}
