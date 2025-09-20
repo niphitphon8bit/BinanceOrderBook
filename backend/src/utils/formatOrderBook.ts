@@ -1,8 +1,8 @@
-type OrderBook = { bids: string[][]; asks: string[][]; symbol: string };
+type OrderBook = { bids: Map<string, string>; asks: Map<string, string>; symbol: string };
 type Order = [number, number];
 
-function parseOrders(orders: string[][]): Order[] {
-  return orders.map(([p, q]) => [parseFloat(p), parseFloat(q)]);
+function parseOrders(orders: Map<string, string>): Order[] {
+  return Array.from(orders.entries()).map(([price, quantity]) => [parseFloat(price), parseFloat(quantity)]);
 }
 
 function formatTopOrders(
@@ -13,7 +13,7 @@ function formatTopOrders(
   return orders
     .sort(sortFn)
     .slice(0, limit)
-    .map(([p, q]) => [p.toFixed(1), q.toFixed(2)]);
+    .map(([price, quantity]) => [price.toFixed(1), quantity.toFixed(2)]);
 }
 
 export function formatOrderBook(orderBook: OrderBook) {
@@ -28,4 +28,3 @@ export function formatOrderBook(orderBook: OrderBook) {
     asks: topAsks,
   };
 }
-
